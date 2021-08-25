@@ -17,35 +17,49 @@
         <h1>Students List</h1>
     </header>
     
-<!--MAIN--> 
+<!--MAIN-->
     <main class="container mt-2">
         <div id="app">
-            <table class="table table-hover pointer">
+            <table class="table table-hover pointer border-bottom">
                 <thead class="table-dark text-center">
                     <th>#</th>
                     <th>Nome</th>
                     <th>Cognome</th>
                     <th>Matricola</th>
-                    <th>Italiano</th>
-                    <th>Inglese</th>
-                    <th>Matematica</th>
-                    <th>Informatica</th>
+                    <th v-for="(interrogazioni, materia) in students[0].voti"
+                    class="text-capitalize">{{ materia }}</th>
                     <th>Media Tot.</th>
                 </thead>
-                <tbody class="text-center">
+                <tbody class="text-center border-bottom">
                     <tr v-for="(student, index) in students"
                         :class="{'table-danger' : isFailed(student.voti)}"
-                    >
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                            
                         <th role="col">{{ index + 1 }}</th>
                         <td>{{ student.nome }}</td>
                         <td>{{ student.cognome }}</td>
                         <td>#{{ student.matricola }}</td>
                         <td v-for="valutazione in student.voti">{{ getAverageGrades(valutazione) }}</td>
                         <td>{{ getAverageGradesTot(student.voti) }}</td>
-
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </tr>
                 </tbody>
-              </table>
+            </table>
         </div>
     </main>
 
@@ -53,7 +67,7 @@
     <footer>
 
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

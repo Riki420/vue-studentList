@@ -22,6 +22,7 @@ const app = new Vue({
         isFailed(voti){
             return this.getAverageGradesTot(voti) < 6;
 
-        }
+        },
+        
     }
 })

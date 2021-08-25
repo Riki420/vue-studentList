@@ -101,6 +101,10 @@ for (let i = 0; i < 10; i++) {
       matematica: getRandomVotes(),
       inglese: getRandomVotes(),
       informatica: getRandomVotes(),
+      storia: getRandomVotes(),
+      filosofia: getRandomVotes(),
+      fisica: getRandomVotes(),
+      scienze: getRandomVotes()
     },
   };
   students.push(studente);
